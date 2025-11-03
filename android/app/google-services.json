@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "984500608679",
+    "project_id": "cookguideapp",
+    "storage_bucket": "cookguideapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984500608679:android:6d5f38d4a4ca040dfe8582",
+        "android_client_info": {
+          "package_name": "com.example.app_cooking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCazrQ57hLsp0DEDUwb5_rX5fjjqpAxPcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984500608679:android:bdac307219ac7078fe8582",
+        "android_client_info": {
+          "package_name": "com.example.untitled"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCazrQ57hLsp0DEDUwb5_rX5fjjqpAxPcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984500608679:android:7b8b9168a59b9a51fe8582",
+        "android_client_info": {
+          "package_name": "com.example.untitled1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCazrQ57hLsp0DEDUwb5_rX5fjjqpAxPcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
