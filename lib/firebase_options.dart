@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCazrQ57hLsp0fDEDUwb5_rX5fjjqpAxPcI',
+    apiKey: 'AIzaSyCazrQ57hLsp0DEDUwb5_rX5fjjqpAxPcI',
     appId: '1:984500608679:android:7b8b9168a59b9a51fe8582',
     messagingSenderId: '984500608679',
     projectId: 'cookguideapp',

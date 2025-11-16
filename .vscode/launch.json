@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter: Run on Waydroid",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "deviceId": "192.168.240.112:5555",
+      "toolArgs": []
+    },
+    {
+      "name": "Flutter: Run on Linux",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "deviceId": "linux",
+      "toolArgs": []
+    },
+    {
+      "name": "Flutter: Run (Auto-select device)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart"
+    }
+  ]
+}
+
