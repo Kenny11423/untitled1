@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../models/recipe_model.dart';
+import '../models/user_model.dart';
 import '../services/firebase_service.dart';
 import '../widgets/recipe_card.dart';
 import '../constants/app_colors.dart';
 import '../screens/login_screen.dart';
+import '../screens/add_edit_recipe_screen.dart';
+import 'user_management_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,11 +24,20 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Recipe> _filteredRecipes = [];
   String _searchQuery = '';
   String _selectedCategory = 'Tất cả';
+  AppUser? _currentUser;
 
   @override
   void initState() {
     super.initState();
     _recipesFuture = _loadRecipes();
+    _loadCurrentUser();
+  }
+
+  Future<void> _loadCurrentUser() async {
+    final user = await _firebaseService.getCurrentUser();
+    setState(() {
+      _currentUser = user;
+    });
   }
 
   Future<List<Recipe>> _loadRecipes() async {
@@ -119,6 +131,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+                      // Admin menu
+                      if (_currentUser?.isAdmin == true)
+                        IconButton(
+                          icon: const Icon(Icons.admin_panel_settings),
+                          color: AppColors.primary,
+                          tooltip: 'Quản lý tài khoản',
+                          onPressed: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const UserManagementScreen(),
+                              ),
+                            );
+                            _loadCurrentUser(); // Refresh user info
+                          },
+                        ),
                       IconButton(
                         icon: const Icon(Icons.logout),
                         color: AppColors.textSecondary,
@@ -310,7 +338,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: const EdgeInsets.symmetric(vertical: 8),
                                   itemCount: _filteredRecipes.length,
                                   itemBuilder: (context, index) =>
-                                      RecipeCard(recipe: _filteredRecipes[index]),
+                                      RecipeCard(
+                                        recipe: _filteredRecipes[index],
+                                        onDeleted: () {
+                                          _refreshRecipes();
+                                        },
+                                      ),
                                 ),
                         ),
                       ),
@@ -321,6 +354,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const AddEditRecipeScreen(),
+            ),
+          );
+          if (result == true) {
+            _refreshRecipes();
+          }
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Thêm công thức'),
+        backgroundColor: AppColors.primary,
       ),
     );
   }
